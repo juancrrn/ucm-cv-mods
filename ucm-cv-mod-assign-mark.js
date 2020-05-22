@@ -8,6 +8,9 @@
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
 // ==/UserScript==
 
+/**
+ * @var {Object} mod Auxiliar object used as namespace for variables and functions
+ */
 var mod = {};
 
 /**
