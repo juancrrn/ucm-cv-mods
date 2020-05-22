@@ -14,7 +14,9 @@ Se hace uso de Bootstrap, aprovechando que el tema por defecto del Campus virtua
 
 ### Mod de nombres de cursos (ucm-cv-mod-course-naming.js)
 
-![Demostración del cambio de nombre en la lista de sitios principal](https://raw.githubusercontent.com/juancrrn/ucm-cv-mods/master/screenshots/screenshot-course-list-home.png =100x)
+![Demostración del cambio de nombre en la lista de sitios principal](https://raw.githubusercontent.com/juancrrn/ucm-cv-mods/master/screenshots/screenshot-course-list-home.png)
+
+![Demostración del cambio de nombre en el menú de sitios](https://raw.githubusercontent.com/juancrrn/ucm-cv-mods/master/screenshots/screenshot-course-list-drawer.png)
 
 Se ejecuta en varias vistas del sitio (`https://cv4.ucm.es/moodle/*`) y se encarga de _arreglar_ los nombres de los cursos, es decir, sustituirlos en títulos, listas y barras de navegación por otros definidos por el usuario. Además, se incluye la posibilidad de utilizar abreviaturas, cursos y grupos.
 
@@ -60,6 +62,12 @@ mod.allCourses = [
 
 Se ejecuta en la vista de tarea (_assignment_) (`https://cv4.ucm.es/moodle/mod/assign/*`) y se encarga de detectar si la tarea ha sido entregada y, en dicho caso, agregarla a la cookie de almacenamiento de tareas entregadas.
 
+Se requiere que este script esté instalado para el correcto funcionamiento del siguiente.
+
 ### Mod de marcas de entregas realizadas (ucm-cv-mod-assign-mark.js)
 
+![Demostración de las insignias de entrega en la vista de un curso](https://raw.githubusercontent.com/juancrrn/ucm-cv-mods/master/screenshots/screenshot-assign-marks.png)
+
 Se ejecuta en la vista de curso (`https://cv4.ucm.es/moodle/course/*`) y se encarga de marcar cada tarea (_assignment_) con una insignia (_badge_) verde que indica que la misma ha sido entregada. Para ello, utiliza los valores almacenados en la cookie de almacenamiento de tareas entregadas.
+
+Se requiere que el script anterior esté instalado para el correcto funcionamiento de este.
