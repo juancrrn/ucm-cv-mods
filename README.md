@@ -14,7 +14,7 @@ Se hace uso de Bootstrap, aprovechando que el tema por defecto del Campus virtua
 
 ### Mod de nombres de cursos (ucm-cv-mod-course-naming.js)
 
-![Demostración del cambio de nombre en la lista de sitios principal](https://raw.githubusercontent.com/juancrrn/ucm-cv-mods/master/screenshots/screenshot-course-list-home.png)
+![Demostración del cambio de nombre en la lista de sitios principal](https://raw.githubusercontent.com/juancrrn/ucm-cv-mods/master/screenshots/screenshot-course-list-home.png =100x)
 
 Se ejecuta en varias vistas del sitio (`https://cv4.ucm.es/moodle/*`) y se encarga de _arreglar_ los nombres de los cursos, es decir, sustituirlos en títulos, listas y barras de navegación por otros definidos por el usuario. Además, se incluye la posibilidad de utilizar abreviaturas, cursos y grupos.
 
