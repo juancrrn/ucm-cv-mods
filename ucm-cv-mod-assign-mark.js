@@ -14,6 +14,11 @@
 var mod = {};
 
 /**
+ * @var {string} name Name of the current mod, for console debugging.
+ */
+mod.name = 'ucm-cv-mod-assign-mark';
+
+/**
  * @var {string} storageName Name of the stored assignments cookie.
  */
 mod.storageName = 'ucm_cv4_stored_submitted_assignments_data_v0.0.1';
@@ -44,7 +49,7 @@ $(() => {
     // Get stored assignments cookie
     var storedAssignmentsRaw = mod.readCookie(mod.storageName);
 
-    console.log(storedAssignmentsRaw);
+    console.log(mod.name + ': Currently stored assignments are ' + storedAssignmentsRaw);
 
     // Parse cookie
     var storedAssignments = storedAssignmentsRaw.split('-');
@@ -52,7 +57,7 @@ $(() => {
     $.each(storedAssignments, function (k, v) {
         var id = '#module-' + v;
 
-        console.log(id + ' is stored as submitted.');
+        console.log(mod.name + ': ' + id + ' is stored as submitted.');
 
         var badgeHtml = '<span class="badge badge-success" style="text-indent: 0; vertical-align: middle; margin-right: 5px;">Entregado</span>';
 
