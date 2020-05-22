@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Mod de recolección de entregas realizadas para el Campus virtual de la Universidad Complutense de Madrid
 // @author       juancrrn
-// @match        https://cv4.ucm.es/moodle/course/*
+// @match        https://cv4.ucm.es/moodle/mod/assign/*
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
 // ==/UserScript==
 
