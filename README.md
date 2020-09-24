@@ -1,10 +1,10 @@
 # Mods para el Campus virtual de la UCM
 
-Algunos scripts en JavaScript (con jQuery) de mods para el Campus virtual de la Universidad Complutense de Madrid (Moodle 3.4).
+Algunos scripts en JavaScript (con jQuery) de mods para el Campus virtual de la Universidad Complutense de Madrid (Moodle 3.8).
 
 ## Introducción
 
-Estos scripts modifican distintos aspectos de la web del Campus virtual general de la Universidad Complutense de Madrid (Moodle 3.4).
+Estos scripts modifican distintos aspectos de la web del Campus virtual general de la Universidad Complutense de Madrid (Moodle 3.8).
 
 Los scripts están escritos en JavaScript y hacen uso de la librería jQuery (versión 3.5.1 slim). Están pensados para ser ejecutados desde el cliente (navegador) tras la carga del sitio. Para ello, se puden usar extensiones de navegador como Tampermonkey o Greasemonkey.
 
