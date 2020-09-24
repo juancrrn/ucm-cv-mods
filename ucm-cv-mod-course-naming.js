@@ -130,39 +130,42 @@ mod.allCourses = [
     // ...
 ];
 
-// Wait for the document to be loaded
+/* Wait for the document to be loaded */
 $(() => {
-    // Fix CSS styling
+    /* Fix CSS styling */
     var cssText = `
     /* Replace body font family */
     body {
-        font-family', '"SF Pro Text", "Segoe UI", "Arial", sans-serif !important;
+        font-family: "SF Pro Text", "Segoe UI", "Arial", sans-serif !important;
     }
 
-    /* Replace header background */
+    /* Fix header background */
     .bg-white {
         background-color: #ffffff !important;
+    }
+
+    /* Hide main nav bar brand */
+    .navbar .navbar-brand {
+        display: none !important;
     }
     `;
 
     var cssTag = $('<style>' + cssText + '</style>')
     $('html > head').append(cssTag);
 
-    // Apply fixes to each course
+    /* Clean main navbar */
+    $('.navbar .navbar-nav').empty();
+    $('.navbar .navbar-nav').append('<li class="nav-item"><a class="nav-item nav-link" href="https://cvmdp.ucm.es/moodle/">Inicio</a></li>');
+
+    /* Apply fixes to each course */
     $.each(mod.allCourses, function () {
         this.fixOnAll();
     });
 
-    // Clean course list
+    /* Clean course list */
     $('.coursebox>.info>.coursename a').css('background-image', 'none');
     $('.coursebox>.info>.coursename a').css('padding-left', 0);
 
-    // Hide teachers from the course list
+    /* Hide teachers from the course list */
     $('.coursebox .teachers').hide();
-
-    // Hide main nav bar brand
-    $('.navbar-brand').hide();
-
-    // Prepend a Moodle home link to the main nav bar
-    $('.nav.navbar-nav.hidden-md-down').prepend('<a class="nav-item nav-link" href="https://cv4.ucm.es/moodle/">Inicio</a>');
 });
