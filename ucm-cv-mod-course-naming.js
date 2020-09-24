@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Mod de nombres de cursos CV UCM (ucm-cv-mod-course-naming)
-// @namespace    https://juancarrion.xyz
+// @namespace    https://juancrrn.io
 // @version      0.1
 // @description  Mod de nombres de cursos para el Campus virtual de la Universidad Complutense de Madrid
 // @author       juancrrn
-// @match        https://cv4.ucm.es/moodle/*
+// @match        https://cvmdp.ucm.es/moodle/*
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
 // ==/UserScript==
 
