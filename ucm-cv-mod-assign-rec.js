@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Mod de recolección de entregas realizadas CV UCM (ucm-cv-mod-assign-rec)
-// @namespace    https://juancarrion.xyz
+// @namespace    https://juancrrn.io
 // @version      0.1
 // @description  Mod de recolección de entregas realizadas para el Campus virtual de la Universidad Complutense de Madrid
 // @author       juancrrn
