@@ -132,8 +132,21 @@ mod.allCourses = [
 
 // Wait for the document to be loaded
 $(() => {
-    // Replace body font family
-    $('body').css('font-family', '"SF Pro Text", "Segoe UI", "Arial", sans-serif');
+    // Fix CSS styling
+    var cssText = `
+    /* Replace body font family */
+    body {
+        font-family', '"SF Pro Text", "Segoe UI", "Arial", sans-serif !important;
+    }
+
+    /* Replace header background */
+    .bg-white {
+        background-color: #ffffff !important;
+    }
+    `;
+
+    var cssTag = $('<style>' + cssText + '</style>')
+    $('html > head').append(cssTag);
 
     // Apply fixes to each course
     $.each(mod.allCourses, function () {
