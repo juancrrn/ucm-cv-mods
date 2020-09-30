@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         Mod de nombres de cursos CV UCM (ucm-cv-mod-course-naming)
 // @namespace    https://juancrrn.io
-// @version      0.1
+// @version      0.2
 // @description  Mod de nombres de cursos para el Campus virtual de la Universidad Complutense de Madrid
 // @author       juancrrn
 // @match        https://cvmdp.ucm.es/moodle/*
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
+// @run-at       document-start
 // ==/UserScript==
 
 /**
@@ -46,9 +47,9 @@ class Course
     {
         // Check if course is marked as hidden
         if (! this.hide) {
-            $('.coursebox[data-courseid="' + this.moodleId + '"] .coursename a').html('<span class="badge m-r-1">' + this.shortName + '</span>' + this.fullName);
+            $('.coursebox[data-courseid="' + this.moodleId + '"] .coursename a').html('<span class="badge badge-secondary ucm-cv-mod-badge ucm-cv-mod-badge-list-shortname-fixed-w m-r-1">' + this.shortName + '</span>' + this.fullName);
         } else {
-            $('.coursebox[data-courseid="' + this.moodleId + '"]').hide();
+            $('.coursebox[data-courseid="' + this.moodleId + '"]').remove();
         }
     };
 
@@ -57,11 +58,18 @@ class Course
      */
     fixOnNavDrawer()
     {
-        // Check if course is marked as hidden
+        // Pre-hide everything
+        $('#nav-drawer a.list-group-item.list-group-item-action[data-key="' + this.moodleId + '"]').closest('li').remove();
+
         if (! this.hide) {
-            $('#nav-drawer a.list-group-item.list-group-item-action[data-key="' + this.moodleId + '"] div').html('<span class="badge m-r-1">' + this.shortName + '</span>');
-        } else {
-            $('#nav-drawer a.list-group-item.list-group-item-action[data-key="' + this.moodleId + '"]').hide();
+            var newItemHtml = `
+            <li>
+            <a class="list-group-item list-group-item-action" href="https://cvmdp.ucm.es/moodle/course/view.php?id=${ this.moodleId }" data-key="${ this.moodleId }" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="mycourses">
+            <div class="ml-1"><span class="badge badge-secondary ucm-cv-mod-badge ucm-cv-mod-badge-shortname-fixed-w m-r-1">${ this.shortName }</span></div>
+            </a>
+            </li>`;
+
+            $('#nav-drawer > nav.list-group > ul').append($(newItemHtml));
         }
     };
 
@@ -70,16 +78,16 @@ class Course
      */
     fixOnCourseTitle()
     {
-        $('body.course-' + this.moodleId + ' header#page-header .page-context-header h1').html('<span class="badge m-r-1">' + this.shortName + '</span>' + this.fullName);
+        $('body.course-' + this.moodleId + ' header#page-header .page-context-header h1').html('<span class="badge badge-secondary ucm-cv-mod-badge m-r-1">' + this.shortName + '</span>' + this.fullName);
 
         var badges = '';
 
         if (this.hide) {
-            badges += '<span class="badge badge-warning m-r-1">Oculto</span>';
+            badges += '<span class="badge badge-warning ucm-cv-mod-badge m-r-1"><i class="icon fa fa-eye-slash fa-fw"></i> Oculto</span>';
         }
 
         if (this.level || this.group) {
-            badges += '<span class="badge m-r-1">';
+            badges += '<span class="badge badge-secondary ucm-cv-mod-badge m-r-1">';
             if (this.level) badges += this.level + 'º';
             if (this.group) badges += ' ' + this.group;
             badges += '</span>';
@@ -97,19 +105,53 @@ class Course
     {
         var html = '';
 
-        html += '<span class="badge m-r-1">' + this.shortName + '</span>';
+        html += '<span class="badge badge-secondary ucm-cv-mod-badge ucm-cv-mod-badge-shortname-fixed-w m-r-1">' + this.shortName + '</span>';
 
         if (this.level || this.group) {
-            html += '<span class="badge m-r-1">';
+            html += '<span class="badge badge-secondary ucm-cv-mod-badge m-r-1">';
             if (this.level) html += this.level + 'º';
             if (this.group) html += ' ' + this.group;
             html += '</span>';
+        }
+
+        if (this.hide) {
+            html += '<i class="icon fa fa-eye-slash fa-fw"></i>';
         }
 
         html += this.fullName;
 
         $('.block_course_list a[title="' + this.ucmCode + '"]').html(html);
     };
+
+    /**
+     * Fixes a course's name on the sidebar nav tree
+     */
+    fixOnSidebarNavTree()
+    {
+        const currentThis = this;
+
+        const treeCourseSelector = '#block-region-side-pre .block_navigation .content .block_tree.list .type_course';
+
+        if (this.hide) {
+            $(treeCourseSelector + ' .tree_item a').filter(function() {
+                return $(this).text() == currentThis.ucmCode;
+            }).closest(treeCourseSelector).remove();
+        } else {
+            const fullHtml = '<span class="badge badge-secondary ucm-cv-mod-badge ucm-cv-mod-badge-shortname-fixed-w m-r-1">' + currentThis.shortName + '</span>';
+
+            $(treeCourseSelector + ' .tree_item a').filter(function() {
+                return $(this).text() == currentThis.ucmCode;
+            }).html(fullHtml);
+        }
+    };
+
+    /**
+     * Fixes a course's name on dashboard cards
+     */
+    /*fixOnDashboardCards()
+    {
+        $('.dashboard-card[data-course-id="' + this.moodleId + '"] .course-info-container .coursename .multilne').text(this.fullName);
+    }*/
 
     /**
      * Calls all fix methods on a course
@@ -120,6 +162,7 @@ class Course
         this.fixOnNavDrawer();
         this.fixOnCourseTitle();
         this.fixOnBlockCourseList();
+        this.fixOnSidebarNavTree();
     };
 };
 
@@ -148,14 +191,35 @@ $(() => {
     .navbar .navbar-brand {
         display: none !important;
     }
+
+    /* Badges */
+    .ucm-cv-mod-badge {
+        border-radius: 5px;
+    }
+
+    .ucm-cv-mod-badge-shortname-fixed-w {
+        width: 42px;
+    }
+
+    .ucm-cv-mod-badge-list-shortname-fixed-w {
+        width: 88px;
+    }
+
+    /* Home course list */
+    .courses .coursebox,
+    .courses .coursebox.even,
+    .courses .coursebox.odd {
+        border-bottom: 1px solid #eee;
+        background-color: transparent !important;
+    }
     `;
 
     var cssTag = $('<style>' + cssText + '</style>')
     $('html > head').append(cssTag);
 
     /* Clean main navbar */
-    $('.navbar .navbar-nav').empty();
-    $('.navbar .navbar-nav').append('<li class="nav-item"><a class="nav-item nav-link" href="https://cvmdp.ucm.es/moodle/">Inicio</a></li>');
+    $('.navbar .navbar-nav:nth-child(3)').empty();
+    $('.navbar .navbar-nav:nth-child(3)').append('<li class="nav-item"><a class="nav-item nav-link" href="https://cvmdp.ucm.es/moodle/">Inicio</a></li>');
 
     /* Apply fixes to each course */
     $.each(mod.allCourses, function () {
@@ -167,5 +231,5 @@ $(() => {
     $('.coursebox>.info>.coursename a').css('padding-left', 0);
 
     /* Hide teachers from the course list */
-    $('.coursebox .teachers').hide();
+    $('.coursebox .teachers').remove();
 });
