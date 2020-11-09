@@ -58,13 +58,27 @@ mod.allCourses = [
 ];
 ```
 
+### Mod de redirección automática del CV al SSO UCM (ucm-cv-mod-autologin.js)
+
+Cuando se intenta acceder a alguna parte de un curso o asignatura, por ejemplo, desde un enlace de un correo electrónico, y no se ha iniciado sesión, Moodle redirecciona a la página de matriculación en el curso. Desde esa página, hay que hacer clic en Continuar, y después en Acceso con cuenta UCM, para llegar por fin al formulario de SSO.
+
+Este mod actúa en la página de matriculación y redirecciona automáticamente a la página del formulario de SSO, ahorrando todos esos pasos. A pesar de actuar solo en esa página, también funciona, por ejemplo, si se intenta acceder a mensajes de foros o ficheros adjuntos desde enlaces de correo electrónico.
+
+No requiere configuración.
+
+Bug detectado: bucle de redirección si se intenta acceder a cursos en los que no se está matriculado, estando la sesión iniciada.
+
 ### Mod de recolección de entregas realizadas CV UCM (ucm-cv-mod-assign-rec.js)
+
+**No actualizado a la versión 3.8.**
 
 Se ejecuta en la vista de tarea (_assignment_) (`https://cv4.ucm.es/moodle/mod/assign/*`) y se encarga de detectar si la tarea ha sido entregada y, en dicho caso, agregarla a la cookie de almacenamiento de tareas entregadas.
 
 Se requiere que este script esté instalado para el correcto funcionamiento del siguiente.
 
 ### Mod de marcas de entregas realizadas (ucm-cv-mod-assign-mark.js)
+
+**No actualizado a la versión 3.8.**
 
 ![Demostración de las insignias de entrega en la vista de un curso](https://raw.githubusercontent.com/juancrrn/ucm-cv-mods/for-moodle-3.8/screenshots/screenshot-assign-marks.png)
 
