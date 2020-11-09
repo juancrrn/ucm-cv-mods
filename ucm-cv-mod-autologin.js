@@ -1,15 +1,8 @@
 // ==UserScript==
-// @name         Mod de redirección automática del CV al SSO UCM
-//               (ucm-cv-mod-autologin)
+// @name         Mod de redirección automática del CV al SSO UCM (ucm-cv-mod-autologin)
 // @namespace    https://juancrrn.io
 // @version      0.1
-// @description  Mod de redirección de la página de matrícula en curso, cuando
-//               no se ha iniciado sesión, al inicio de sesión del Campus
-//               virtual y, de ahí, al inicio de sesión único (SSO) de la
-//               Universidad Complutense de Madrid, con vuelta automática a la
-//               página del curso. Esto permite, entre otras cosas, que, cuando
-//               se hace clic en un enlace de un email de Moodle, se reduzcan
-//               los pasos hasta llegar al contenido deseado.
+// @description  Mod de redirección de la página de matrícula en curso, cuando no se ha iniciado sesión, al inicio de sesión del Campus virtual y, de ahí, al inicio de sesión único (SSO) de la Universidad Complutense de Madrid, con vuelta automática a la página del curso. Esto permite, entre otras cosas, que, cuando se hace clic en un enlace de un email de Moodle, se reduzcan los pasos hasta llegar al contenido deseado.
 // @author       juancrrn
 // @match        https://cvmdp.ucm.es/moodle/enrol/index.php?id=*
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
