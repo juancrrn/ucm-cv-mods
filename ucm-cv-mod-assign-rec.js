@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Mod de recolección de entregas realizadas CV UCM (ucm-cv-mod-assign-rec)
-// @namespace    https://juancarrion.xyz
-// @version      0.1
+// @namespace    https://juancrrn.io
+// @version      0.2
 // @description  Mod de recolección de entregas realizadas para el Campus virtual de la Universidad Complutense de Madrid
 // @author       juancrrn
-// @match        https://cv4.ucm.es/moodle/mod/assign/*
+// @match        https://cvmdp.ucm.es/moodle/mod/assign/*
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
 // ==/UserScript==
 
@@ -21,7 +21,7 @@ mod.name = 'ucm-cv-mod-assign-rec';
 /**
  * @var {string} storageName Name of the stored assignments cookie.
  */
-mod.storageName = 'ucm_cv4_stored_submitted_assignments_data_v0.0.1';
+mod.storageName = 'ucm_cvmdp_stored_submitted_assignments_data_v0.2';
 
 /**
  * Retrieves the value of a param of the current URL by its name.
