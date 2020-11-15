@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Mod de marcas de entregas realizadas CV UCM (ucm-cv-mod-assign-mark)
-// @namespace    https://juancarrion.xyz
-// @version      0.1
+// @namespace    https://juancrrn.io
+// @version      0.2
 // @description  Mod de marcas de entregas realizadas para el Campus virtual de la Universidad Complutense de Madrid
 // @author       juancrrn
-// @match        https://cv4.ucm.es/moodle/course/*
+// @match        https://cvmdp.ucm.es/moodle/course/*
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
 // ==/UserScript==
 
@@ -21,7 +21,7 @@ mod.name = 'ucm-cv-mod-assign-mark';
 /**
  * @var {string} storageName Name of the stored assignments cookie.
  */
-mod.storageName = 'ucm_cv4_stored_submitted_assignments_data_v0.0.1';
+mod.storageName = 'ucm_cvmdp_stored_submitted_assignments_data_v0.2';
 
 /**
  * Retrieves a client cookie by its name.
@@ -59,7 +59,7 @@ $(() => {
 
         console.log(mod.name + ': ' + id + ' is stored as submitted.');
 
-        var badgeHtml = '<span class="badge badge-success" style="text-indent: 0; vertical-align: middle; margin-right: 5px;">Entregado</span>';
+        var badgeHtml = '<span style="text-indent: 0; color: #398439; vertical-align: middle;"><i class="icon fa fa-check fa-fw " title="Entregado"></i></span>';
 
         // Mark the assignments
         $(badgeHtml).insertBefore(id + ' .instancename');
