@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mod de modo oscuro CV UCM (ucm-cv-mod-dark-mode)
 // @namespace    https://juancrrn.io
-// @version      0.2
+// @version      0.3
 // @description  Mod de modo oscuro para el Campus virtual de la Universidad Complutense de Madrid
 // @author       juancrrn
 // @match        https://cvmdp.ucm.es/moodle/*
@@ -37,11 +37,13 @@ $(() => {
       --dark-background: #1f2022;
       --lighter-background: #404046;
       --mod-accent-color: ${ mod_accent_color };
+      --mod-graded-green: #49734f;
+      --mod-submitted-green: #334836;
     }
     a {
       color: var(--mod-accent-color) !important;
     }
-    body {
+    html, body {
       background-color:  var(--dark-background) !important;
       color: #eee;
     }
@@ -79,6 +81,83 @@ $(() => {
       background-color: var(--lighter-background) !important;
       border-color: var(--lighter-background) !important;
       color: var(--light) !important;
+    }
+
+    /* Submission page*/
+
+    .table, table.collection, table.flexible, .generaltable {
+      color: var(--light) !important;
+    }
+    .table-hover tbody tr:hover, table.grading-report tbody tr:hover, .forumheaderlist tbody tr:hover, .generaltable tbody tr:hover, table.flexible tbody tr:hover, .category_subcategories tbody tr:hover, table#modules tbody tr:hover, table#permissions tbody tr:hover {
+      color: var(--light) !important;
+      background-color: var(--lighter-background);
+    }
+    .table th, table.collection th, table.flexible th, .generaltable th, .table td, table.collection td, table.flexible td, .generaltable td {
+      border-top-color: var(--lighter-background) !important;
+    }
+    .path-mod-assign td.submissionstatussubmitted, .path-mod-assign div.submissionstatussubmitted, .path-mod-assign a:link.submissionstatussubmitted {
+      color: var(--light) !important;
+      background-color: var(--mod-submitted-green) !important;
+    }
+    .path-mod-assign td.earlysubmission, .path-mod-assign div.earlysubmission {
+      color: var(--light) !important;
+      background-color: var(--mod-submitted-green) !important;
+    }
+    .path-mod-assign td.submissionnotgraded, .path-mod-assign div.submissionnotgraded {
+      color: var(--light) !important;
+      background-color: var(--lighter-background) !important;
+    }
+    .path-mod-assign td.submissiongraded, .path-mod-assign div.submissiongraded {
+        color: var(--light) !important;
+        background-color: var(--mod-ok-green) !important;
+    }
+
+    /* Adaptable Moodle Theme (green one) */
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--light) !important;
+    }
+
+    #adaptable-page-header-wrapper #main-navbar {
+        background-color: var(--light-background) !important;
+        border-bottom-color: var(--lighter-background) !important;
+    }
+
+    #above-header {
+        background-color: var(--dark-background) !important;
+        border-bottom-color: var(--lighter-background) !important;
+    }
+
+    #adaptable-page-header-wrapper {
+        background-color: var(--light-background) !important;
+    }
+
+    #page .course-content ul li.section.main {
+        background-color: var(--light-background) !important;
+        border-color: var(--light-background) !important;
+    }
+
+    .section li.modtype_quiz div.activity-wrapper {
+        background-color: var(--lighter-background) !important;
+        border-bottom-color: var(--dark-background) !important;
+    }
+
+    .section li.modtype_assign div.activity-wrapper {
+        background-color: var(--lighter-background) !important;
+        border-bottom-color: var(--dark-background) !important;
+    }
+
+    .sectionname {
+        background-color: transparent !important;
+        color: var(--light) !important;
+    }
+
+    .breadcrumb {
+        background-color: var(--light-background) !important;
+    }
+
+    .breadcrumb ul i, .breadcrumb li.lastli span {
+        color: var(--light) !important;
     }
     `;
 
