@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mod de modo oscuro CV UCM (ucm-cv-mod-dark-mode)
 // @namespace    https://juancrrn.io
-// @version      0.3
+// @version      0.4
 // @description  Mod de modo oscuro para el Campus virtual de la Universidad Complutense de Madrid
 // @author       juancrrn
 // @match        https://cvmdp.ucm.es/moodle/*
@@ -39,6 +39,9 @@ $(() => {
       --mod-accent-color: ${ mod_accent_color };
       --mod-graded-green: #49734f;
       --mod-submitted-green: #334836;
+      --gray-out-color-dark: #595959;
+      --gray-out-badge-color-dark: #5e5e5e;
+      --gray-out-badge-text-color-dark: var(--light-background);
     }
     a {
       color: var(--mod-accent-color) !important;
@@ -158,6 +161,17 @@ $(() => {
 
     .breadcrumb ul i, .breadcrumb li.lastli span {
         color: var(--light) !important;
+    }
+
+    /* Grayed out courses */
+
+    /* Gray out courses */
+    .coursebox .coursename a.mod-gray-out {
+        color: var(--gray-out-color-dark) !important;
+    }
+    .coursebox .coursename a.mod-gray-out .ucm-cv-mod-badge {
+        background-color: var(--gray-out-badge-color-dark) !important;
+        color: var(--gray-out-badge-text-color-dark) !important;
     }
     `;
 
