@@ -28,7 +28,7 @@ class Course
     /**
      * Default constructor.
      */
-    constructor(moodleId, ucmCode, fullName, shortName, level = null, group = null, hide = false, year = 2020)
+    constructor(moodleId, ucmCode, fullName, shortName, level = null, group = null, hide = false, year = 2020, grayOut = false)
     {
         this.moodleId = moodleId;
         this.ucmCode = ucmCode;
@@ -38,6 +38,7 @@ class Course
         this.level = level;
         this.hide = hide;
         this.year = year;
+        this.grayOut = grayOut;
     }
 
     /**
@@ -47,6 +48,10 @@ class Course
     {
         // Check if course is marked as hidden
         if (! this.hide) {
+            if (this.grayOut) {
+                $('.coursebox[data-courseid="' + this.moodleId + '"] .coursename a').addClass('mod-gray-out');
+            }
+
             $('.coursebox[data-courseid="' + this.moodleId + '"] .coursename a').html('<span class="badge badge-secondary ucm-cv-mod-badge ucm-cv-mod-badge-list-shortname-fixed-w m-r-1">' + this.shortName + '</span>' + this.fullName);
         } else {
             $('.coursebox[data-courseid="' + this.moodleId + '"]').remove();
@@ -170,47 +175,62 @@ class Course
  * @var {array} Array containing all the courses to fix
  */
 mod.allCourses = [
-    // ...
+    new Course(8369, '20-230836', 'Tecnología y Organización de Computadores', 'TOC', 2, 'B', false, '2020'),
+    new Course(6212, '20-586442', 'Software Corporativo', 'SC', 3, 'B', false, '2020', true),
+    new Course(2505, '20-633452', 'Redes y Seguridad 1', 'RS1', 3, 'B', false, '2020'),
+    new Course(9700, '20-629810', 'Matemática Discreta y Lógica Matemática 1', 'MDL1', 1, 'F', false, '2020'),
+    new Course(3799, '20-633417', 'Auditoría Informática 2', 'AI2', 3, 'B', false, '2020', true),
+    new Course(8852, '20-633415', 'Auditoría Informática 1', 'AI1', 3, 'B', false, '2020', true),
+    new Course(7923, '20-175752', 'Ampliación de Matemáticas', 'AM', 2, 'B', false, '2020', true),
+    new Course(14968, '20-175832', 'Probabilidad y Estadística', 'PE', 2, 'B', false, '2020', true),
+    new Course(15002, '20-633472', 'Redes y Seguridad 2', 'RS2', 3, 'B', false, '2020', true)
 ];
 
 /* Wait for the document to be loaded */
 $(() => {
     /* Fix CSS styling */
     var cssText = `
+    :root {
+        --gray-out-color: #8c8c8c;
+        --gray-out-badge-color: #e6e6e6;
+        --gray-out-badge-text-color: #8a8a8a;
+    }
     /* Replace body font family */
     body {
         font-family: "SF Pro Text", "Segoe UI", "Arial", sans-serif !important;
     }
-
     /* Fix header background */
     .bg-white {
         background-color: #ffffff !important;
     }
-
     /* Hide main nav bar brand */
     .navbar .navbar-brand {
         display: none !important;
     }
-
     /* Badges */
     .ucm-cv-mod-badge {
         border-radius: 5px;
     }
-
     .ucm-cv-mod-badge-shortname-fixed-w {
         width: 42px;
     }
-
     .ucm-cv-mod-badge-list-shortname-fixed-w {
         width: 88px;
     }
-
     /* Home course list */
     .courses .coursebox,
     .courses .coursebox.even,
     .courses .coursebox.odd {
         border-bottom: 1px solid #eee;
         background-color: transparent !important;
+    }
+    /* Gray out courses */
+    .coursebox .coursename a.mod-gray-out {
+        color: var(--gray-out-color);
+    }
+    .coursebox .coursename a.mod-gray-out .ucm-cv-mod-badge {
+        background-color: var(--gray-out-badge-color);
+        color: var(--gray-out-badge-text-color);
     }
     `;
 
