@@ -175,15 +175,7 @@ class Course
  * @var {array} Array containing all the courses to fix
  */
 mod.allCourses = [
-    new Course(8369, '20-230836', 'Tecnología y Organización de Computadores', 'TOC', 2, 'B', false, '2020'),
-    new Course(6212, '20-586442', 'Software Corporativo', 'SC', 3, 'B', false, '2020', true),
-    new Course(2505, '20-633452', 'Redes y Seguridad 1', 'RS1', 3, 'B', false, '2020'),
-    new Course(9700, '20-629810', 'Matemática Discreta y Lógica Matemática 1', 'MDL1', 1, 'F', false, '2020'),
-    new Course(3799, '20-633417', 'Auditoría Informática 2', 'AI2', 3, 'B', false, '2020', true),
-    new Course(8852, '20-633415', 'Auditoría Informática 1', 'AI1', 3, 'B', false, '2020', true),
-    new Course(7923, '20-175752', 'Ampliación de Matemáticas', 'AM', 2, 'B', false, '2020', true),
-    new Course(14968, '20-175832', 'Probabilidad y Estadística', 'PE', 2, 'B', false, '2020', true),
-    new Course(15002, '20-633472', 'Redes y Seguridad 2', 'RS2', 3, 'B', false, '2020', true)
+    
 ];
 
 /* Wait for the document to be loaded */
