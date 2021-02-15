@@ -14,74 +14,25 @@ Se hace uso de Bootstrap, aprovechando que el tema por defecto del Campus virtua
 
 ### Mod de nombres de cursos (ucm-cv-mod-course-naming.js)
 
-![Demostración del cambio de nombre en la lista de sitios principal](https://raw.githubusercontent.com/juancrrn/ucm-cv-mods/for-moodle-3.8/screenshots/screenshot-course-list-home.png)
-
-![Demostración del cambio de nombre en el menú de sitios](https://raw.githubusercontent.com/juancrrn/ucm-cv-mods/for-moodle-3.8/screenshots/screenshot-course-list-drawer.png)
-
-Se ejecuta en varias vistas del sitio (`https://cv4.ucm.es/moodle/*`) y se encarga de _arreglar_ los nombres de los cursos, es decir, sustituirlos en títulos, listas y barras de navegación por otros definidos por el usuario. Además, se incluye la posibilidad de utilizar abreviaturas, cursos y grupos.
-
-Este script no recoge automáticamente los cursos, sino que el usuario debe definirlos mediante el constructor de la clase `Course` e insertarlos en el array `mod.allCourses`. El constructor está definido de la siguiente forma:
-
-```javascript
-Course.constructor(
-  moodleId,
-  ucmCode,
-  fullName,
-  shortName,
-  level = null,
-  group = null,
-  hide = false,
-  year = 2020
-) { ... }
-```
-
-- `moodleId` Id del curso interno de Moodle (de tipo número entero `XXXXXX`, se puede encontrar en `https://cv4.ucm.es/moodle/course/view.php?id=XXXXXX`)
-- `ucmCode` Id de asignatura de la UCM (de tipo número entero con guión `XX-XXXXXX`, se puede encontrar en la vista de curso, en la navegación _breadcrumbs_, `Página Principal / Mis cursos / XX-XXXXXX / Portada`)
-- `fullName` Nombre completo
-- `shortName` Abreviatura
-- `level` (`null` por defecto) Nivel (`1` para 1º, `2` para 2º, etc.)
-- `group` (`null` por defecto) Grupo (`A`, etc.)
-- `hide` (`false` por defecto) Ocultar el curso (si es `true`, no se mostrará en las listas ni en la navegación)
-- `year` (`2020` por defecto) Año
-
-De manera que, el array donde se almacenan los cursos, podría quedar así:
-
-```javascript
-mod.allCourses = [
-    new Course(359416, '19-614953', 'Aplicaciones Web', 'AW', 3, 'D'),
-    new Course(136429, '19-924631', 'Ingeniería del Software 2', 'IS2', 2, 'B'),
-    new Course(163452, '19-254361', 'Seguridad en Redes', 'SER'),
-
-    new Course(482540, 'seminario-invest-5248-4', 'Vengadores UCM: campo de tiro', 'Veng'),
-
-    new Course(3879, 'EC0020', 'Espacio de coordinación de la Facultad de Informática', 'ECFDI', null, null, true),
-];
-```
+- Última versión: 0.2.
+- Script: [ucm-cv-mod-course-naming.js](https://github.com/juancrrn/ucm-cv-mods/blob/for-moodle-3.8/ucm-cv-mod-course-naming.js).
+- Wiki con instrucciones: [wiki/Mod-de-nombres-de-cursos](https://github.com/juancrrn/ucm-cv-mods/wiki/Mod-de-nombres-de-cursos).
 
 ### Mod de redirección automática del CV al SSO UCM (ucm-cv-mod-autologin.js)
 
-Cuando se intenta acceder a alguna parte de un curso o asignatura, por ejemplo, desde un enlace de un correo electrónico, y no se ha iniciado sesión, Moodle redirecciona a la página de matriculación en el curso. Desde esa página, hay que hacer clic en Continuar, y después en Acceso con cuenta UCM, para llegar por fin al formulario de SSO.
-
-Este mod actúa en la página de matriculación y redirecciona automáticamente a la página del formulario de SSO, ahorrando todos esos pasos. A pesar de actuar solo en esa página, también funciona, por ejemplo, si se intenta acceder a mensajes de foros o ficheros adjuntos desde enlaces de correo electrónico.
-
-No requiere configuración.
-
-Bug detectado: bucle de redirección si se intenta acceder a cursos en los que no se está matriculado, estando la sesión iniciada.
+- Última versión: 0.2.
+- Script: [ucm-cv-mod-autologin.js](https://github.com/juancrrn/ucm-cv-mods/blob/for-moodle-3.8/ucm-cv-mod-autologin.js).
+- Wiki con instrucciones: [wiki/Mod-de-redirección-automática-del-CV-al-SSO-UCM](https://github.com/juancrrn/ucm-cv-mods/wiki/Mod-de-redirecci%C3%B3n-autom%C3%A1tica-del-CV-al-SSO-UCM).
 
 ### Mod de recolección de entregas realizadas CV UCM (ucm-cv-mod-assign-rec.js)
 
-**No actualizado a la versión 3.8.**
-
-Se ejecuta en la vista de tarea (_assignment_) (`https://cv4.ucm.es/moodle/mod/assign/*`) y se encarga de detectar si la tarea ha sido entregada y, en dicho caso, agregarla a la cookie de almacenamiento de tareas entregadas.
-
-Se requiere que este script esté instalado para el correcto funcionamiento del siguiente.
+- Última versión: 0.2.
+- Script: [ucm-cv-mod-assign-rec.js](https://github.com/juancrrn/ucm-cv-mods/blob/for-moodle-3.8/ucm-cv-mod-assign-rec.js).
+- Wiki con instrucciones: [wiki/Mod-de-recolección-de-entregas-realizadas](https://github.com/juancrrn/ucm-cv-mods/wiki/Mod-de-recolecci%C3%B3n-de-entregas-realizadas).
 
 ### Mod de marcas de entregas realizadas (ucm-cv-mod-assign-mark.js)
 
-**No actualizado a la versión 3.8.**
+- Última versión: 0.2.
+- Script: [ucm-cv-mod-assign-mark.js](https://github.com/juancrrn/ucm-cv-mods/blob/for-moodle-3.8/ucm-cv-mod-assign-mark.js).
+- Wiki con instrucciones: [wiki/Mod-de-marcas-de-entregas-realizadas](https://github.com/juancrrn/ucm-cv-mods/wiki/Mod-de-marcas-de-entregas-realizadas).
 
-![Demostración de las insignias de entrega en la vista de un curso](https://raw.githubusercontent.com/juancrrn/ucm-cv-mods/for-moodle-3.8/screenshots/screenshot-assign-marks.png)
-
-Se ejecuta en la vista de curso (`https://cv4.ucm.es/moodle/course/*`) y se encarga de marcar cada tarea (_assignment_) con una insignia (_badge_) verde que indica que la misma ha sido entregada. Para ello, utiliza los valores almacenados en la cookie de almacenamiento de tareas entregadas.
-
-Se requiere que el script anterior esté instalado para el correcto funcionamiento de este.
