@@ -44,6 +44,6 @@ Se hace uso de Bootstrap, aprovechando que el tema por defecto del Campus virtua
 
 ![Demostración del tema oscuro en la lista de sitios principal](https://raw.githubusercontent.com/juancrrn/ucm-cv-mods/for-moodle-3.8/screenshots/screenshot-dark.jpg)
 
-- Última versión: 0.2.
+- Última versión: 0.5.
 - Script: [ucm-cv-mod-dark-mode.js](https://github.com/juancrrn/ucm-cv-mods/blob/for-moodle-3.8/ucm-cv-mod-dark-mode.js).
 - Wiki con instrucciones: [wiki/Mod-de-tema-oscuro](https://github.com/juancrrn/ucm-cv-mods/wiki/Mod-de-tema-oscuro).
